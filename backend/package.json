@@ -1,0 +1,29 @@
+{
+  "name": "backend",
+  "version": "1.0.0",
+  "description": "",
+  "main": "./out/index.js",
+  "scripts": {
+    "start1": "node $NODE_DEBUG_OPTION out/index.js",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "tsc && node out/index.js",
+    "compile": "tsc && node node_modules/tspath_ext/dist/tspath.js -f"
+  },
+  "author": "Andrey Korobeynikov",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/express": "^4.17.0",
+    "tslint": "^5.18.0",
+    "typescript": "^3.5.2"
+  },
+  "dependencies": {
+    "@types/node": "^12.6.2",
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "mysql": "^2.17.1",
+    "reflect-metadata": "^0.1.13",
+    "routing-controllers": "^0.7.7",
+    "typedi": "^0.8.0",
+    "typeorm": "^0.2.18"
+  }
+}
