@@ -27,7 +27,11 @@ export default class ChairModel extends BaseEntity implements IChair {
     @Max(150)
     public row: number;
 
-    @Column('int')
+    @Column({
+         type: 'enum',
+         enum: ChairTypeEnum,
+         default: ChairTypeEnum.Empty
+    })
     public type: ChairTypeEnum;
 
     @OneToMany(type => ChairSubTypeModel, subType => subType.subType)

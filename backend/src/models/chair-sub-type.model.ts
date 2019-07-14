@@ -7,7 +7,13 @@ export class ChairSubTypeModel extends BaseEntity {
     @PrimaryGeneratedColumn()
     public id: number;
 
-    @Column()
-    @ManyToOne(type => ChairModel, chair => chair.subTypes)
+    @Column({
+        type: 'enum',
+        enum: ChairSubTypeEnum,
+        default: ChairSubTypeEnum.ArmrestRises
+    })
     public subType: ChairSubTypeEnum;
+
+    @ManyToOne(type => ChairModel, chair => chair.subTypes)
+    public chair: ChairModel;
 }

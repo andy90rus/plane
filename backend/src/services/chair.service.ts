@@ -10,6 +10,13 @@ export class ChairService {
         newChair.row = chair.row || 2;
         newChair.isFree = chair.isFree || 0;
         newChair.type = chair.type || 2;
+
+        // const newSubtype = new ChairSubTypeModel();
+        // newSubtype.subType = ChairSubTypeEnum.Emergency;
+        // await newSubtype.save();
+        // const newSubtype = await ChairSubTypeModel.save(chair.subTypes[0]);
+        newChair.subTypes = chair.subTypes;
+        // newSubtype.chair = newChair;
         return newChair;
     }
 }
