@@ -1,13 +1,16 @@
 import {createConnection, Connection} from 'typeorm';
 import {Service} from 'typedi';
+import {Config} from './config';
 
 @Service()
 class DataBaseService {
     public readonly connection: Promise<Connection>;
-    constructor() {
+    constructor(private config: Config) {
+        console.log('DB_CONNECT:', config);
+
         this.connection = createConnection({
             type: "mysql",
-            host: "db",
+            host: config.database.host,
             port: 3306,
             username: "root",
             password: "pass",
