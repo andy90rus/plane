@@ -7,7 +7,7 @@ class DataBaseService {
     constructor() {
         this.connection = createConnection({
             type: "mysql",
-            host: "localhost",
+            host: "db",
             port: 3306,
             username: "root",
             password: "pass",

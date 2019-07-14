@@ -4,10 +4,9 @@
   "description": "",
   "main": "./out/index.js",
   "scripts": {
-    "start1": "node $NODE_DEBUG_OPTION out/index.js",
+    "start-node": "node $NODE_DEBUG_OPTION out/index.js",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "tsc && node out/index.js",
-    "compile": "tsc && node node_modules/tspath_ext/dist/tspath.js -f"
+    "start": "tsc && node out/index.js"
   },
   "author": "Andrey Korobeynikov",
   "license": "ISC",

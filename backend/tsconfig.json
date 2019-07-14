@@ -11,32 +11,3 @@
     "node_modules"
   ]
 }
-//{
-//  "compilerOptions": {
-//    "target": "es2017",
-//    "experimentalDecorators": true,
-//    "emitDecoratorMetadata": true,
-//    "module": "commonjs",
-//    "outDir": "./out",
-//    "sourceMap": true,
-//    "baseUrl": ".",
-//    "rootDirs": [
-//      "./src",
-//      "../common/src",
-//      "../data_models/src",
-//      "../services/src"
-//    ],
-//    "paths": {
-//      "@common/*" : ["../common/src/*"],
-//      "@models/*" : ["../data_models/src/*"],
-//      "@services/*" : ["../services/src/*"]
-//    }
-//  },
-//  "include": [
-//    "src/**/*.ts"
-//  ],
-//
-//  "exclude": [
-//    "node_modules"
-//  ]
-//}
