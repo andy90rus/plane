@@ -3,11 +3,6 @@ import PlaneModel from '../models/plane.model';
 import ChairModel from '../models/chair.model';
 import {IPlane} from '../models/interfaces/IPlane.interface';
 import {PlaneService} from '../services/planes.service';
-import {ChairSubTypeEnum} from '../models/enums/chair-sub-type.enum';
-import {ChairTypeEnum} from '../models/enums/chair-type.enum';
-import {ChairService} from '../services/chair.service';
-import {ChairSubTypeModel} from '../models/chair-sub-type.model';
-import {create} from 'domain';
 
 @JsonController('/planes')
 export class PlanesController {
@@ -25,8 +20,27 @@ export class PlanesController {
     @Post('/addChair')
     public async addChairToPlane(@Body() chair: ChairModel) {
         const plane = await PlaneModel.findOne({id: 1});
-        const newChair = await ChairService.addChairToPlane(chair, plane);
-        return await newChair.save();
+        const newChair = new ChairModel(chair);
+        newChair.plane = plane;
+        await newChair.save();
+        // newChair.subTypes = await Promise.all(newChair.subTypes.map(
+        //     async subType => {
+        //         const newSubType = new ChairSubTypeModel(subType);
+        //         newSubType.chair = newChair;
+        //         return await newSubType.save()
+        //     }));
+        // newChair.subTypes.forEach(subType => delete subType.chair);
+
+        delete newChair.plane;
+        plane.chairs = plane.chairs || [];
+        plane.chairs.push(newChair);
+        return plane;
+        // return await plane.save();
+        // newChair.sa
+        // return await plane.save();
+        // const newChair = await ChairService.addChairToPlane(chair, plane);
+        // return await newChair.save();
+
     }
     @Put('/updateChairs')
     public async updateChairs(@Body() chairs: ChairModel[]) {

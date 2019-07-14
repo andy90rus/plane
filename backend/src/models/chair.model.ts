@@ -12,7 +12,6 @@ import PlaneModel from './plane.model';
 import {IChair} from './interfaces/IChairs.interface';
 import {Min, Max} from 'class-validator';
 import {ChairSubTypeEnum} from './enums/chair-sub-type.enum';
-import {ChairSubTypeModel} from './chair-sub-type.model';
 
 @Entity()
 export default class ChairModel extends BaseEntity implements IChair {
@@ -34,13 +33,13 @@ export default class ChairModel extends BaseEntity implements IChair {
     })
     public type: ChairTypeEnum;
 
-    @OneToMany(type => ChairSubTypeModel, subType => subType.subType)
-    public subTypes: ChairSubTypeModel[];
+    @Column({
+        type: 'simple-array',
+    })
+    public subTypes: ChairSubTypeEnum[];
 
     @Column()
-    @Min(0)
-    @Max(1)
-    public isFree: 0 | 1 = 1;
+    public isFree: boolean = true;
 
     @Column()
     @Min(1)
@@ -53,6 +52,12 @@ export default class ChairModel extends BaseEntity implements IChair {
     @ManyToOne(type => PlaneModel, plane => plane.chairs)
     @JoinColumn()
     public plane: PlaneModel;
+
+    constructor(init?: Partial<ChairModel>) {
+        super();
+        Object.assign(this, init);
+    }
+
 }
 
 // const a = {"planes": [{

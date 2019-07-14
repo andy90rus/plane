@@ -7,6 +7,6 @@ export interface IChair {
     row: number;
     type: ChairTypeEnum;
     plane: IPlane;
-    isFree: 0 | 1;
+    isFree: boolean;
     price: number;
 }
