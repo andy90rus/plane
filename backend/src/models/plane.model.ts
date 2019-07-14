@@ -19,8 +19,6 @@ export default class PlaneModel extends BaseEntity implements IPlane {
     @Column()
     public numberOfPassengers: number;
 
-    @OneToMany(type => ChairModel, chair => chair.plane)
+    @OneToMany(type => ChairModel, chair => chair.plane, {cascade: true})
     public chairs: ChairModel[];
 }
-
-// BOING-737-800 | 181 cells | 158 chairs

@@ -1,10 +1,8 @@
 import {
     BaseEntity,
     Column, Entity,
-    Index, JoinColumn,
-    JoinTable,
-    ManyToMany,
-    ManyToOne, OneToMany,
+    JoinColumn,
+    ManyToOne,
     PrimaryGeneratedColumn
 } from 'typeorm';
 import {ChairTypeEnum} from './enums/chair-type.enum';
@@ -57,40 +55,4 @@ export default class ChairModel extends BaseEntity implements IChair {
         super();
         Object.assign(this, init);
     }
-
 }
-
-// const a = {"planes": [{
-//     "id": 1,
-//     "model": 'Boing-737-800',
-//     "places": {
-//     [1,1,0,1,1],
-//     [1,1,0,1,1],
-//     [1,1,0,1,1],
-//     [1,1,0,1,1],
-//     [1,1,0,1,1],
-//     [1,1,1,0,1,1,1],
-//     [1,1,1,0,1,1,1],
-//     [1,1,1,0,1,1,1],
-//     [1,1,1,0,1,1,1],
-//     [1,1,1,0,1,1,1],
-//     [1,1,1,0,1,1,1],
-//     [1,1,1,0,1,1,1],
-//     [1,1,1,0,1,1,1],
-//     [1,1,1,0,1,1,1],
-//     [1,1,1,0,1,1,1],
-//     [1,1,1,0,1,1,1],
-//     [1,1,1,0,1,1,1],
-//     [1,1,1,0,1,1,1],
-//     [1,1,1,0,1,1,1],
-//     [1,1,1,0,1,1,1],
-//     [1,1,1,0,1,1,1],
-//     [1,1,1,0,1,1,1],
-//     [1,1,1,0,1,1,1],
-//     [1,1,1,0,1,1,1],
-//     [1,1,1,0,1,1,1],
-//     [1,1,1,0,1,1,1],
-//     [1,1,1,0,1,1,1],
-//     [1,1,1,0,1,1,1],
-//     [1,1,1,0,1,1,1]
-// }}]};
