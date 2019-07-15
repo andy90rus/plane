@@ -1,5 +1,5 @@
 import ChairModel from '../models/chair.model';
-import {ChairSubTypeEnum} from '../models/enums/chair-sub-type.enum';
+import {ChairTypeEnum} from '../models/enums/chair-type.enum';
 
 export class ChairService {
     public static async addChairToPlane(chair: ChairModel, plane) {
@@ -11,5 +11,9 @@ export class ChairService {
         newChair.type = chair.type;
         newChair.subTypes = chair.subTypes;
         return newChair;
+    }
+
+    public static isChairUpdateValidate(chair: ChairModel): boolean {
+        return chair.type !== ChairTypeEnum.Empty;
     }
 }

@@ -4,7 +4,7 @@ import ChairModel from '../models/chair.model';
 import {IPlane} from '../models/interfaces/IPlane.interface';
 import {PlaneService} from '../services/planes.service';
 import {IChair} from '../models/interfaces/IChairs.interface';
-import {ChairTypeEnum} from '../models/enums/chair-type.enum';
+import {ChairService} from '../services/chair.service';
 
 @JsonController('/planes')
 export class PlanesController {
@@ -15,7 +15,6 @@ export class PlanesController {
     }
     @Post('/')
     public async createPlane(@Body() plane: IPlane): Promise<IPlane> {
-        //Todo set type of variable as interface
         const newPlane = PlaneService.createNewPlane(plane);
         return await PlaneModel.save(newPlane);
     }
@@ -31,11 +30,9 @@ export class PlanesController {
     public async updateChairs(@Param('planeId') planeId: number,
                               @Body() chairs: ChairModel[]): Promise<IChair[]> {
         return Promise.all(
-            chairs.filter(async (chair) => {
-                return (await ChairModel.findOne({id: chair.id})).type !== ChairTypeEnum.Empty;
-            }).map(async (chair) => {
+            chairs.map(async (chair) => {
                 const updatedChair: ChairModel =  await ChairModel.findOne({id: chair.id});
-                if (updatedChair.type !== ChairTypeEnum.Empty) {
+                if (ChairService.isChairUpdateValidate(updatedChair)) {
                     updatedChair.isFree = chair.isFree;
                     updatedChair.price = chair.price || updatedChair.price;
                     return await ChairModel.save(updatedChair);
