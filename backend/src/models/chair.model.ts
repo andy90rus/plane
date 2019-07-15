@@ -1,6 +1,6 @@
 import {
     BaseEntity,
-    Column, Entity,
+    Column, Entity, Index,
     JoinColumn,
     ManyToOne,
     PrimaryGeneratedColumn
@@ -24,6 +24,7 @@ export default class ChairModel extends BaseEntity implements IChair {
     @Max(150)
     public row: number;
 
+    @Index()
     @Column({
          type: 'enum',
          enum: ChairTypeEnum,

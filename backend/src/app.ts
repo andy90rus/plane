@@ -4,6 +4,7 @@ import {useExpressServer} from 'routing-controllers';
 import DataBaseService from './dataBase.service';
 import {PlanesController} from './controllers/planes.controller';
 import {Config} from './config';
+import {ChairsController} from './controllers/chairs.controller';
 
 class App {
     constructor(
@@ -15,7 +16,8 @@ class App {
             routePrefix: '/api',
             cors: {exposedHeaders: ['Content-Disposition']},
             controllers: [
-                PlanesController
+                PlanesController,
+                ChairsController
             ]
         })
     }
